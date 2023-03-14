@@ -1,0 +1,8 @@
+Apps:
+  Database:
+    Type: mysql
+    Host: 192.168.47.150
+    Port: 3306
+    Database: test
+    Username: root
+    Password: root

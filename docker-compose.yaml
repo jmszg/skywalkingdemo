@@ -1,0 +1,55 @@
+version: '2.1'
+
+services:
+  skywalkingdemo-loadgenerate:
+    image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-loadgenerate:v1.1.0
+    networks: [ sw-godemo ]
+    environment:
+      SW_OAP_SERVER: default
+      SERVER1: default
+      MYSQL_URL: default
+      MYSQL_USER: default
+      MYSQL_PASSWD: default
+      MYSQL_DB: default
+
+  skywalkingdemo-server1:
+    image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-server1:v1.1.0
+    networks: [ sw-godemo ]
+    environment:
+      SW_OAP_SERVER: default
+      SERVER2: default
+      MYSQL_URL: default
+      MYSQL_USER: default
+      MYSQL_PASSWD: default
+      MYSQL_DB: default
+    ports:
+      - "7001:7001"
+
+  skywalkingdemo-server2:
+    image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-server2:v1.1.0
+    networks: [ sw-godemo ]
+    environment:
+      SW_OAP_SERVER: default
+      SERVER3: default
+      MYSQL_URL: default
+      MYSQL_USER: default
+      MYSQL_PASSWD: default
+      MYSQL_DB: default
+    ports:
+      - "7002:7002"
+
+  skywalkingdemo-server3:
+    image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-server3:v1.1.0
+    networks: [ sw-godemo ]
+    environment:
+      SW_OAP_SERVER: default
+      SERVER3: default
+      MYSQL_URL: default
+      MYSQL_USER: default
+      MYSQL_PASSWD: default
+      MYSQL_DB: default
+    ports:
+      - "7003:7003"
+
+networks:
+  sw-godemo:
