@@ -6,12 +6,13 @@ import (
 	model2 "skywalkingdemo/pkg/model"
 	tracerhelper2 "skywalkingdemo/pkg/tracerhelper"
 	"skywalkingdemo/pkg/tracerhelper/ginagent"
+	"skywalkingdemo/pkg/utils"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	if tracerhelper2.StartTracer("192.168.47.150:11800", "test-demo1") != nil {
+	if tracerhelper2.StartTracer(utils.GetEnv("SW_OAP_SERVER", "192.168.47.150:11800"), "test-demo1") != nil {
 		fmt.Println("create gosky reporter failed!")
 	}
 
@@ -25,7 +26,7 @@ func main() {
 }
 
 func test(c *gin.Context) {
-	tracerhelper2.Get("http://127.0.0.1:7002/test")
+	tracerhelper2.Get(utils.GetEnv("SERVER2", "http://127.0.0.1:7002/test"))
 
 	model2.Read5ScoreLogModel{}.GetId(1, 2)
 	model2.Read5WhiteListModel{}.GetId(1, 2)

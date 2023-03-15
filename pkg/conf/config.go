@@ -1,9 +1,10 @@
 package conf
 
 import (
+	"gopkg.in/yaml.v3"
 	"os"
-
-	"gopkg.in/yaml.v2"
+	"skywalkingdemo/pkg/utils"
+	"strings"
 )
 
 type Config struct {
@@ -23,6 +24,18 @@ type Apps struct {
 	Database Item `yaml:"Database"`
 }
 
+func replaceEnvDefault(s string) string {
+	// 解析环境变量的默认值
+	parts := strings.SplitN(s, ":", 2)
+	if len(parts) == 2 {
+		// 获取环境变量的值，如果不存在则使用默认值
+		key := strings.TrimLeft(parts[0], "${")
+		value := strings.TrimRight(parts[1], "}")
+		return utils.GetEnv(key, value)
+	}
+	return s
+}
+
 func ReadYamlConfig(path string) (*Config, error) {
 	conf := &Config{}
 	if f, err := os.Open(path); err != nil {
@@ -33,5 +46,13 @@ func ReadYamlConfig(path string) (*Config, error) {
 			return nil, err
 		}
 	}
+
+	// 替换环境变量的默认值
+	conf.Apps.Database.Host = replaceEnvDefault(conf.Apps.Database.Host)
+	conf.Apps.Database.Database = replaceEnvDefault(conf.Apps.Database.Database)
+	conf.Apps.Database.Username = replaceEnvDefault(conf.Apps.Database.Username)
+	conf.Apps.Database.Password = replaceEnvDefault(conf.Apps.Database.Password)
+	conf.Apps.Database.Port = replaceEnvDefault(conf.Apps.Database.Port)
+
 	return conf, nil
 }

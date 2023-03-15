@@ -6,12 +6,13 @@ import (
 	model2 "skywalkingdemo/pkg/model"
 	"skywalkingdemo/pkg/tracerhelper"
 	"skywalkingdemo/pkg/tracerhelper/ginagent"
+	"skywalkingdemo/pkg/utils"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	if tracerhelper.StartTracer("192.168.47.150:11800", "test-demo3") != nil {
+	if tracerhelper.StartTracer(utils.GetEnv("SW_OAP_SERVER", "192.168.47.150:11800"), "test-demo3") != nil {
 		fmt.Println("create gosky reporter failed!")
 	}
 

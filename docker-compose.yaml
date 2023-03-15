@@ -8,9 +8,14 @@ services:
       SW_OAP_SERVER: default
       SERVER1: default
       MYSQL_URL: default
+      MYSQL_PORT: default
       MYSQL_USER: default
       MYSQL_PASSWD: default
       MYSQL_DB: default
+    depends_on:
+      - skywalkingdemo-server1
+      - skywalkingdemo-server2
+      - skywalkingdemo-server3
 
   skywalkingdemo-server1:
     image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-server1:v1.1.0
@@ -19,6 +24,7 @@ services:
       SW_OAP_SERVER: default
       SERVER2: default
       MYSQL_URL: default
+      MYSQL_PORT: default
       MYSQL_USER: default
       MYSQL_PASSWD: default
       MYSQL_DB: default
@@ -32,6 +38,7 @@ services:
       SW_OAP_SERVER: default
       SERVER3: default
       MYSQL_URL: default
+      MYSQL_PORT: default
       MYSQL_USER: default
       MYSQL_PASSWD: default
       MYSQL_DB: default
@@ -45,6 +52,7 @@ services:
       SW_OAP_SERVER: default
       SERVER3: default
       MYSQL_URL: default
+      MYSQL_PORT: default
       MYSQL_USER: default
       MYSQL_PASSWD: default
       MYSQL_DB: default

@@ -5,7 +5,7 @@ go 1.19
 require (
 	github.com/SkyAPM/go2sky v1.5.0
 	github.com/gin-gonic/gin v1.7.7
-	gopkg.in/yaml.v2 v2.4.0
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b
 	gorm.io/driver/mysql v1.0.1
 	gorm.io/gorm v1.20.1
 	skywalking.apache.org/repo/goapi v0.0.0-20220401015832-2c9eee9481eb
@@ -35,4 +35,5 @@ require (
 	google.golang.org/genproto v0.0.0-20220228195345-15d65a4533f7 // indirect
 	google.golang.org/grpc v1.44.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
+	gopkg.in/yaml.v2 v2.4.0 // indirect
 )

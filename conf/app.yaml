@@ -1,8 +1,8 @@
 Apps:
   Database:
     Type: mysql
-    Host: 192.168.47.150
-    Port: 3306
-    Database: test
-    Username: root
-    Password: root
+    Host: ${MYSQL_URL:192.168.47.150}
+    Port: ${MYSQL_PORT:3306}
+    Database: ${MYSQL_DB:test}
+    Username: ${MYSQL_USER:root}
+    Password: ${MYSQL_PASSWD:root}

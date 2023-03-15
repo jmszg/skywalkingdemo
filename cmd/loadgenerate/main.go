@@ -5,27 +5,18 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 	"time"
 
 	"github.com/SkyAPM/go2sky"
 	httpp "github.com/SkyAPM/go2sky/plugins/http"
 	"github.com/SkyAPM/go2sky/reporter"
+	utils "skywalkingdemo/pkg/utils"
 )
-
-var url string
-
-func init() {
-	if v, ok := os.LookupEnv("URL"); ok {
-		url = v
-	} else {
-		url = "http://127.0.0.1:7001/test"
-	}
-}
 
 func main() {
 	// Obtained by SW_AGENT_COLLECTOR_BACKEND_SERVICES
-	r, err := reporter.NewGRPCReporter("192.168.47.150:11800")
+	url := utils.GetEnv("SERVER1", "http://127.0.0.1:7001/test")
+	r, err := reporter.NewGRPCReporter(utils.GetEnv("SW_OAP_SERVER", "192.168.47.150:11800"))
 	if err != nil {
 		log.Fatal(err)
 	}
