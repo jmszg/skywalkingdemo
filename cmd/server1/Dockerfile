@@ -4,4 +4,4 @@ FROM $BASEIMAGE
 COPY build/amd64/skywalkingdemo-server1 /
 COPY conf/app.yaml /conf/app.yaml
 
-CMD ["/skywalkdemo-server1"]
+CMD ["/skywalkingdemo-server1"]

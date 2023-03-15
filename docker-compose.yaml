@@ -5,13 +5,13 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-loadgenerate:v1.1.0
     networks: [ sw-godemo ]
     environment:
-      SW_OAP_SERVER: default
-      SERVER1: default
-      MYSQL_URL: default
-      MYSQL_PORT: default
-      MYSQL_USER: default
-      MYSQL_PASSWD: default
-      MYSQL_DB: default
+      SW_OAP_SERVER: 192.168.47.150:11800
+      SERVER1: http://skywalkingdemo-server1:7001/test
+      MYSQL_URL: 192.168.47.150
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWD: root
+      MYSQL_DB: test
     depends_on:
       - skywalkingdemo-server1
       - skywalkingdemo-server2
@@ -21,13 +21,13 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-server1:v1.1.0
     networks: [ sw-godemo ]
     environment:
-      SW_OAP_SERVER: default
-      SERVER2: default
-      MYSQL_URL: default
-      MYSQL_PORT: default
-      MYSQL_USER: default
-      MYSQL_PASSWD: default
-      MYSQL_DB: default
+      SW_OAP_SERVER: 192.168.47.150:11800
+      SERVER2: http://skywalkingdemo-server2:7002/test
+      MYSQL_URL: 192.168.47.150
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWD: root
+      MYSQL_DB: test
     ports:
       - "7001:7001"
 
@@ -35,13 +35,13 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-server2:v1.1.0
     networks: [ sw-godemo ]
     environment:
-      SW_OAP_SERVER: default
-      SERVER3: default
-      MYSQL_URL: default
-      MYSQL_PORT: default
-      MYSQL_USER: default
-      MYSQL_PASSWD: default
-      MYSQL_DB: default
+      SW_OAP_SERVER: 192.168.47.150:11800
+      SERVER3: http://skywalkingdemo-server3:7003/test
+      MYSQL_URL: 192.168.47.150
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWD: root
+      MYSQL_DB: test
     ports:
       - "7002:7002"
 
@@ -49,13 +49,12 @@ services:
     image: registry.cn-hangzhou.aliyuncs.com/zgjhub/skywalkingdemo-server3:v1.1.0
     networks: [ sw-godemo ]
     environment:
-      SW_OAP_SERVER: default
-      SERVER3: default
-      MYSQL_URL: default
-      MYSQL_PORT: default
-      MYSQL_USER: default
-      MYSQL_PASSWD: default
-      MYSQL_DB: default
+      SW_OAP_SERVER: 192.168.47.150:11800
+      MYSQL_URL: 192.168.47.150
+      MYSQL_PORT: 3306
+      MYSQL_USER: root
+      MYSQL_PASSWD: root
+      MYSQL_DB: test
     ports:
       - "7003:7003"
 
